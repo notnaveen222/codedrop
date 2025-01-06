@@ -6,6 +6,7 @@ mongoose.connect(
 
 const codeDropSchema = new mongoose.Schema({
   id: Number,
+  url: String,
   code: String,
 });
 

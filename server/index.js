@@ -1,22 +1,20 @@
 import mongoose from "mongoose";
 import { codeDropModel } from "./db.js";
+import express from "express";
+import { generateRouter } from "./routes/generateGist/generateGist.js";
+import { getRouter } from "./routes/getGist/getGist.js";
+import cors from "cors";
 
-const sampleCode = `
-const x = 1;
-const y = 2;
-console.log(x+y);
-function sample(param1, param2){
-    let z = 5;
-    console.log(5);
-}
-`;
+const app = express();
+app.use(express.json());
+app.use(cors());
+app.use("/generate", generateRouter);
+app.use("/", getRouter);
 
-async function sample() {
-  const data = await codeDropModel.create({
-    id: 2,
-    code: sampleCode,
+app.get("/", function (req, res) {
+  res.json({
+    msg: "Code Drop API Home, redirecting to Generate Page",
   });
-  console.log(data);
-}
+});
 
-sample();
+app.listen(4000);
