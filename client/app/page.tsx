@@ -61,6 +61,7 @@ export default function Home() {
           <div className="flex flex-1 min-w-[95%] max-w-[40vw]">
             <Editor
               className=""
+              width="40vw"
               height="80vh"
               theme="vs-dark"
               defaultLanguage="javascript"
