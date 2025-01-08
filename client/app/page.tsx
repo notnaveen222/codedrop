@@ -58,7 +58,7 @@ export default function Home() {
     <>
       <div className="flex flex-col sm:flex-row">
         <div className="px-10">
-          <div className="flex flex-1 min-w-[95%] max-w-[40vw]">
+          <div className="flex ">
             <Editor
               className=""
               width="40vw"
