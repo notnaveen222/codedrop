@@ -9,7 +9,7 @@ export default function Home() {
   const [code, setcode] = useState<string | undefined>("");
   const [dropStatus, setDropStatus] = useState(false);
   const [dropId, setDropId] = useState("");
-  const [dropUrl, setDropUrl] = useState(""); //make dropID here and for text use conditional css
+  //make dropID here and for text use conditional css
 
   const handleEditorChange = (value: string | undefined) => {
     setcode(value);
@@ -27,16 +27,15 @@ export default function Home() {
         console.log(response.data.id);
         setDropId(response.data.id);
         setDropStatus(true);
-        setDropUrl("http://localhost:3000/" + response.data.id);
       } catch (error) {
         console.log(error);
       }
     }
   };
 
-  const handleOpenLink = () => {
-    window.open(dropUrl, "_blank", "noopener,noreferrer");
-  };
+  // const handleOpenLink = () => {
+  //   window.open(dropUrl, "_blank", "noopener,noreferrer");
+  // };
 
   let timeout: ReturnType<typeof setTimeout>;
   const debounceEditorChange = (value: string | undefined) => {

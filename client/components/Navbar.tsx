@@ -1,6 +1,3 @@
-import Image from "next/image";
-import userIcon from "@/public/userIcon2.png";
-
 export default function Navbar() {
   return (
     <>

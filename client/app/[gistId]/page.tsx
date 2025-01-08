@@ -4,29 +4,33 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Editor } from "@monaco-editor/react";
 
-export default function getGist() {
+export default function GetGist() {
   const { gistId } = useParams<{ gistId: string }>();
-  const [code, setCode] = useState("");
-  const [isCopied, setIsCopied] = useState(false);
-  const [copyButtonText, setCopyButtonText] = useState("Copy to Clipboard");
+  const [code, setCode] = useState("Loading your code");
 
   const getGist = async () => {
-    const response = await axios.get(`https://codedrop.onrender.com/${gistId}`);
-    if (!response.data.code) {
-      setCode(response.data.msg);
-    } else {
-      setCode(response.data.code);
+    try {
+      const response = await axios.get(
+        `https://codedrop.onrender.com/${gistId}`
+      );
+
+      if (!response.data.code) {
+        setCode(response.data.msg);
+      } else {
+        setCode(response.data.code);
+      }
+    } catch (error) {
+      console.error("Error fetching gist:", error);
+      setCode("Error loading code");
     }
   };
 
+  useEffect(() => {
+    getGist();
+  }, []);
+
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
-    setCopyButtonText("Copied");
-    setIsCopied(!isCopied);
-    setTimeout(() => {
-      setCopyButtonText("Copy to Clipboard");
-      setIsCopied(!isCopied);
-    }, 2000);
   };
 
   const options = {
@@ -34,23 +38,19 @@ export default function getGist() {
     minimap: { enabled: false },
   };
 
-  useEffect(() => {
-    getGist();
-  }, []);
   return (
     <>
       <div className="flex">
         <div className="flex-col px-10 ">
           <div className="text-lg mb-3">GistID: {gistId}</div>
-
           <Editor
             height="80vh"
             width="40vw"
             theme="vs-dark"
             defaultLanguage="javascript"
-            defaultValue={code}
+            value={code}
             options={options}
-          ></Editor>
+          />
         </div>
         <button
           onClick={handleCopy}
