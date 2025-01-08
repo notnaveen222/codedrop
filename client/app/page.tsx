@@ -19,7 +19,7 @@ export default function Home() {
     if (code != "") {
       try {
         const response = await axios.post(
-          "https://codedrop.onrender.com/generate",
+          /*"https://codedrop.onrender.com/generate"*/ `https://codedrop-backend.vercel.app/generate`,
           {
             code,
           }

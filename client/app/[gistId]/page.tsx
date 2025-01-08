@@ -11,7 +11,8 @@ export default function GetGist() {
   const getGist = async () => {
     try {
       const response = await axios.get(
-        `https://codedrop.onrender.com/${gistId}`
+        //`https://codedrop.onrender.com/${gistId}`
+        `https://codedrop-backend.vercel.app/${gistId}`
       );
 
       if (!response.data.code) {
