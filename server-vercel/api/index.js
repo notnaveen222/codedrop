@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-import { codeDropModel } from "./db.js";
+import { codeDropModel } from "../db.js";
 import express from "express";
-import { generateRouter } from "./routes/generateGist/generateGist.js";
-import { getRouter } from "./routes/getGist/getGist.js";
+import { generateRouter } from "../routes/generateGist/generateGist.js";
+import { getRouter } from "../routes/getGist/getGist.js";
 import cors from "cors";
 
 const app = express();
