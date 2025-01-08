@@ -6,7 +6,7 @@ import { Editor } from "@monaco-editor/react";
 
 export default function GetGist() {
   const { gistId } = useParams<{ gistId: string }>();
-  const [code, setCode] = useState("Loading your code");
+  const [code, setCode] = useState("//Loading your code");
 
   const getGist = async () => {
     try {
