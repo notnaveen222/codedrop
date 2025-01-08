@@ -77,7 +77,7 @@ export default function Home() {
           </div>
           <Link href={`/${dropId}`}>
             <div className="text-lg cursor-pointer">
-              {dropStatus ? `Link: http://localhost:3000/${dropId}` : ""}
+              {dropStatus ? `Link: https://codedrop1.vercel.app/${dropId}` : ""}
             </div>
           </Link>
         </div>
