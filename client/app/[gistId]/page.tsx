@@ -11,7 +11,7 @@ export default function getGist() {
   const [copyButtonText, setCopyButtonText] = useState("Copy to Clipboard");
 
   const getGist = async () => {
-    const response = await axios.get(`http://localhost:4000/${gistId}`);
+    const response = await axios.get(`https://codedrop.onrender.com/${gistId}`);
     if (!response.data.code) {
       setCode(response.data.msg);
     } else {

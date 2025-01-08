@@ -2,14 +2,14 @@
 
 import { Editor } from "@monaco-editor/react";
 import { useState } from "react";
-
+import Link from "next/link";
 import axios from "axios";
 
 export default function Home() {
   const [code, setcode] = useState<string | undefined>("");
-  const [dropId, setDropId] = useState("Create a drop to generate ID");
-  const [dropUrl, setDropUrl] = useState("");
-  const []; //make dropID here and for text use conditional css
+  const [dropStatus, setDropStatus] = useState(false);
+  const [dropId, setDropId] = useState("");
+  const [dropUrl, setDropUrl] = useState(""); //make dropID here and for text use conditional css
 
   const handleEditorChange = (value: string | undefined) => {
     setcode(value);
@@ -18,12 +18,16 @@ export default function Home() {
   const handleCreateGist = async () => {
     if (code != "") {
       try {
-        const response = await axios.post("http://localhost:4000/generate", {
-          code,
-        });
+        const response = await axios.post(
+          "https://codedrop.onrender.com/generate",
+          {
+            code,
+          }
+        );
         console.log(response.data.id);
-        setDropId("Here is your Drop ID: " + response.data.id);
-        setDropUrl("Link: http://localhost:3000/" + response.data.id);
+        setDropId(response.data.id);
+        setDropStatus(true);
+        setDropUrl("http://localhost:3000/" + response.data.id);
       } catch (error) {
         console.log(error);
       }
@@ -56,7 +60,7 @@ export default function Home() {
               width="40vw"
               theme="vs-dark"
               defaultLanguage="javascript"
-              defaultValue="// Enter your code"
+              defaultValue={`// Enter your code\n`}
               onChange={debounceEditorChange}
               options={options}
             ></Editor>
@@ -69,10 +73,14 @@ export default function Home() {
           </button>
         </div>
         <div className="flex-col">
-          <div className="text-lg">{dropId}</div>
-          <div className="text-lg cursor-pointer" onClick={handleOpenLink}>
-            {dropUrl}
+          <div className="text-lg">
+            {dropStatus ? `Drop ID: ${dropId}` : "Create a drop to generate ID"}
           </div>
+          <Link href={`/${dropId}`}>
+            <div className="text-lg cursor-pointer">
+              {dropStatus ? `Link: http://localhost:3000/${dropId}` : ""}
+            </div>
+          </Link>
         </div>
       </div>
     </>
