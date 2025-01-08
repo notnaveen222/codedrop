@@ -1,13 +1,19 @@
 export default function Navbar() {
   return (
     <>
-      <div className="flex h-[70px] justify-between p-4 px-14">
-        <div className="text-xl">
-          <span className="font-bold">Code</span> Drop
+      <div className="flex h-[70px] justify-between p-4 px-6 sm:px-14">
+        <div className="text-lg flex justify-center items-center">
+          <div>
+            <span className="font-bold">Code</span> Drop
+          </div>
         </div>
-        <div className="flex gap-10 justify-center items-center">
-          <div className="text-lg font-medium cursor-pointer">All Codes</div>
-          <div className="cursor-pointer text-lg ">Your Account</div>
+        <div className="flex gap-6 sm:gap-10 justify-center items-center">
+          <div className="line-through text-sm sm:text-lg font-medium cursor-pointer">
+            All Codes
+          </div>
+          <div className="line-through cursor-pointer text-sm sm:text-lg ">
+            Your Account
+          </div>
         </div>
       </div>
     </>

@@ -44,6 +44,11 @@ export default function Home() {
       handleEditorChange(value);
     }, 1000);
   };
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(
+      `https://codedrop1.vercel.app/${dropId}`
+    );
+  };
   const options = {
     readOnly: false,
     minimap: { enabled: false },
@@ -51,12 +56,12 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex flex-col sm:flex-row">
         <div className="px-10">
-          <div className="">
+          <div className="flex flex-1 min-w-[95%] max-w-[40vw]">
             <Editor
+              className=""
               height="80vh"
-              width="40vw"
               theme="vs-dark"
               defaultLanguage="javascript"
               defaultValue={`// Enter your code\n`}
@@ -72,14 +77,22 @@ export default function Home() {
           </button>
         </div>
         <div className="flex-col">
-          <div className="text-lg">
+          <div className="text-lg pl-10 pt-8 pb-6 sm:pb-0 sm:pt-0">
             {dropStatus ? `Drop ID: ${dropId}` : "Create a drop to generate ID"}
           </div>
           <Link href={`/${dropId}`}>
-            <div className="text-lg cursor-pointer">
+            <div className="pl-10 pr-5 pb-5 text-lg cursor-pointer break-words">
               {dropStatus ? `Link: https://codedrop1.vercel.app/${dropId}` : ""}
             </div>
           </Link>
+          {dropStatus ? (
+            <button
+              className="border-white  ml-10 mb-5 border-2 p-2 rounded-lg"
+              onClick={handleCopy}
+            >
+              Copy Link
+            </button>
+          ) : null}
         </div>
       </div>
     </>
