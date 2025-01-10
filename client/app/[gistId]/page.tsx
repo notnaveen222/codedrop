@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Editor } from "@monaco-editor/react";
+import Navbar from "@/components/Navbar";
 
 export default function GetGist() {
   const { gistId } = useParams<{ gistId: string }>();
@@ -41,7 +42,37 @@ export default function GetGist() {
 
   return (
     <>
-      <div className="flex">
+      <div className=" flex flex-col h-screen">
+        <Navbar />
+        <div className="flex-grow ">
+          <div className="text-white flex justify-center items-center flex-col gap-y-5  h-[100%]">
+            <div className="flex flex-col gap-y-1 border border-white/30 rounded-lg overflow-hidden ">
+              <div className=" text-lg sm:text-xl flex flex-col justify-start  p-2 px-4 ">
+                <div className="font-semibold">Code</div>
+              </div>
+              <div className="border-y border-y-white/30 w-[95vw] md:w-[60vw] lg:w-[40vw]">
+                <Editor
+                  className=""
+                  height="60vh"
+                  theme="vs-dark"
+                  defaultLanguage="javascript"
+                  value={code}
+                  options={options}
+                ></Editor>
+              </div>
+              <div className="pt-4 pb-3 px-4 flex justify-end">
+                <button
+                  onClick={handleCopy}
+                  className="sm:text-lg hover:bg-white hover:text-black transition-all duration-200 ease-out border border-white px-2 py-1 rounded-lg"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <div className="flex">
         <div className="flex-col px-10 ">
           <div className="text-lg mb-3">GistID: {gistId}</div>
           <Editor
@@ -59,7 +90,7 @@ export default function GetGist() {
         >
           Copy
         </button>
-      </div>
+      </div> */}
     </>
   );
 }
