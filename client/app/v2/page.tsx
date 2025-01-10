@@ -25,7 +25,7 @@ export default function V2() {
   const handleCreateGist = async () => {
     if (code != "") {
       try {
-        //send code and custom ID in body
+        //send code and custom ID in body //sent
         const response = await axios.post(
           /*"https://codedrop.onrender.com/generate"*/ `https://codedrop-backend.vercel.app/generate`,
           {
@@ -33,7 +33,6 @@ export default function V2() {
             customId,
           }
         );
-        console.log(response.data.id);
         setDropId(response.data.id);
         setDropStatus(true);
       } catch (error) {
