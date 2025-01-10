@@ -82,12 +82,12 @@ export default function V2() {
         <div className="flex-grow ">
           <div className="text-white flex justify-center items-center flex-col gap-y-5  h-[100%]">
             <div className="flex flex-col gap-y-1 border border-white/30 rounded-lg overflow-hidden ">
-              <div className=" text-lg sm:text-xl flex flex-col justify-start  p-2 px-4 ">
+              <div className="text-lg sm:text-xl flex flex-col justify-start  p-2 px-4 ">
                 <div className="">Create a drop to generate code link</div>
                 <div className="block w-full h-[25px]">
                   Link:{" "}
                   <Link href={`/${customId}`}>
-                    <pre className="inline bg-[#1e1e1e] p-[2px] px-1 rounded-lg">
+                    <pre className="text-md inline bg-[#1e1e1e] p-[2px] px-1 rounded-lg">
                       codedrop1.vercel.app/{customId}
                     </pre>
                   </Link>
