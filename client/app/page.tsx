@@ -1,8 +1,9 @@
 "use client";
 
-import { Editor } from "@monaco-editor/react";
+import { Editor, Monaco } from "@monaco-editor/react";
 import { useState } from "react";
 import Link from "next/link";
+import LandingPage from "../components/LandingPage";
 import axios from "axios";
 
 export default function Home() {
@@ -58,7 +59,7 @@ export default function Home() {
     <>
       <div className="flex flex-col sm:flex-row">
         <div className="px-10">
-          <div className="flex ">
+          <div className="flex border-2 border-transparent rounded-lg overflow-hidden ">
             <Editor
               className=""
               width="40vw"
