@@ -58,6 +58,7 @@ export default function V2() {
         setNotificationMessage(
           "Error Creating Drop ID (Client Error), Try again later!"
         );
+        console.log(error);
         showNotification();
       }
     }
