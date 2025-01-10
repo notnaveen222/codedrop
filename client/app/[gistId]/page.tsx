@@ -3,7 +3,6 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Editor } from "@monaco-editor/react";
-import Navbar from "@/components/Navbar";
 
 export default function GetGist() {
   const { gistId } = useParams<{ gistId: string }>();

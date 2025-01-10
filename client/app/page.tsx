@@ -9,7 +9,7 @@ export default function V2() {
   const [customId, setCustomId] = useState<string>("customid");
   const [code, setcode] = useState<string | undefined>("");
   const [dropId, setDropId] = useState("");
-  const [dropStatus, setDropStatus] = useState(false);
+  // const [dropStatus, setDropStatus] = useState(false);
 
   const handleEditorChange = (value: string | undefined) => {
     setcode(value);
@@ -34,7 +34,7 @@ export default function V2() {
           }
         );
         setDropId(response.data.id);
-        setDropStatus(true);
+        // setDropStatus(true);
       } catch (error) {
         console.log(error);
       }
