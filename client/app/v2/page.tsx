@@ -30,6 +30,7 @@ export default function V2() {
           /*"https://codedrop.onrender.com/generate"*/ `https://codedrop-backend.vercel.app/generate`,
           {
             code,
+            customId,
           }
         );
         console.log(response.data.id);

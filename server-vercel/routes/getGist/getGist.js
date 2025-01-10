@@ -4,16 +4,16 @@ import { codeDropModel } from "../../db.js";
 export const getRouter = express.Router();
 
 getRouter.get("/:id", async function (req, res) {
-  const id = req.params.id;
-  if (id.length != 24) {
-    //_id should be length 24, else run time err
+  const customId = req.params.id;
+  if (customId < 0) {
+    //_id should be length 24, else run time err //updated to customId in V2
     res.json({
-      msg: "Invalid Gist ID",
+      msg: "Invalid Drop ID",
       code: null,
     });
   } else {
     const data = await codeDropModel.findOne({
-      _id: id,
+      customId: customId,
     });
     if (data) {
       res.json({

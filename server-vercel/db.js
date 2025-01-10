@@ -5,6 +5,7 @@ mongoose.connect(
 );
 
 const codeDropSchema = new mongoose.Schema({
+  customId: String,
   code: String,
 });
 
