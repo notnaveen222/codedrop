@@ -8,12 +8,12 @@ export default function Notification({
   return (
     <div
       className={`absolute w-screen bg-transparent flex justify-center transition-all duration-200 ease-in-out ${
-        dropStatus ? "top-10" : "-top-16"
+        dropStatus ? "top-10" : "-top-24"
       }`}
     >
       <div
         className={`rounded-lg  bg-white text-black p-3 text-lg ${
-          dropStatus ? "top-10" : "-top-16"
+          dropStatus ? "top-10" : "-top-24"
         }`}
       >
         {message}

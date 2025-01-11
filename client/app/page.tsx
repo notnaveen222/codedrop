@@ -6,6 +6,9 @@ import axios from "axios";
 import Link from "next/link";
 import Notification from "@/components/Notification";
 
+//To Dos
+//Change to Language Independent
+
 export default function V2() {
   const [customId, setCustomId] = useState<string>("customid");
   const [code, setcode] = useState<string | undefined>("");
@@ -81,13 +84,13 @@ export default function V2() {
         <Navbar />
         <div className="flex-grow ">
           <div className="text-white flex justify-center items-center flex-col gap-y-5  h-[100%]">
-            <div className="flex flex-col gap-y-1 border border-white/30 rounded-lg overflow-hidden ">
+            <div className="flex flex-col gap-y-1 w-[95%] sm:w-fit border border-white/30 rounded-lg overflow-hidden ">
               <div className="text-lg sm:text-xl flex flex-col justify-start  p-2 px-4 ">
                 <div className="">Create a drop to generate code link</div>
-                <div className="block w-full h-[25px]">
+                <div className="text-base sm:text-lg block  h-[25px]">
                   Link:{" "}
                   <Link href={`/${customId}`}>
-                    <pre className="text-md inline bg-[#1e1e1e] p-[2px] px-1 rounded-lg">
+                    <pre className="text-base sm:text-xl inline bg-[#1e1e1e] p-[2px] px-1 rounded-lg">
                       codedrop1.vercel.app/{customId}
                     </pre>
                   </Link>
@@ -99,7 +102,7 @@ export default function V2() {
                   height="60vh"
                   theme="vs-dark"
                   defaultLanguage="javascript"
-                  defaultValue={`// Enter your code\n`}
+                  defaultValue={`// Enter your code, Dont mind errors shown in code\n`}
                   onChange={debounceEditorChange}
                   options={options}
                 ></Editor>
