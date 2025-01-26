@@ -22,7 +22,7 @@ getRouter.get("/:id", async function (req, res) {
       });
     } else {
       res.json({
-        msg: "No Gist Found with that ID",
+        msg: "`No Code Found with that ID`",
         code: null,
       });
     }
