@@ -1,26 +1,25 @@
-import { useState } from "react";
-
-export default function FileUploader({
-  setCode,
-}: {
-  setCode: (content: string | ArrayBuffer | null) => void;
-}) {
-  const [fileContent, setFileContent] = useState<string | ArrayBuffer | null>(
-    ""
-  );
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e.target) {
-          setFileContent(e.target.result);
-          setCode(e.target.result);
-        }
-        reader.readAsText(file);
-      };
-    }
-  };
+// export default function FileUploader({
+//   setCode,
+// }: {
+//   setCode: (content: string | ArrayBuffer | null) => void;
+// }) {
+export default function FileUploader() {
+  // const [fileContent, setFileContent] = useState<string | ArrayBuffer | null>(
+  //   ""
+  // );
+  // const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = event.target.files?.[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       if (e.target) {
+  //         setFileContent(e.target.result);
+  //         setCode(e.target.result);
+  //       }
+  //       reader.readAsText(file);
+  //     };
+  //   }
+  // };
   return (
     <div className="flex items-center justify-center">
       <div>
@@ -32,7 +31,7 @@ export default function FileUploader({
         </label>
         <input
           type="file"
-          onChange={handleFileUpload}
+          // onChange={handleFileUpload}
           id="file-uploader"
           className="hidden"
         />
