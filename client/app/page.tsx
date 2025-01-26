@@ -87,7 +87,7 @@ export default function V2() {
             <div className="flex flex-col gap-y-1 w-[95%] sm:w-fit border border-white/30 rounded-lg overflow-hidden ">
               <div className="text-lg sm:text-xl flex flex-col justify-start  p-2 px-4 ">
                 <div className="">Create a drop to generate code link</div>
-                <div className="text-base sm:text-lg block  h-[25px]">
+                <div className="text-base sm:text-lg block  ">
                   Link:{" "}
                   <Link href={`/${customId}`}>
                     <pre className="text-base sm:text-xl inline bg-[#1e1e1e] p-[2px] px-1 rounded-lg">
