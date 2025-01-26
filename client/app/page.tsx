@@ -11,7 +11,9 @@ import Notification from "@/components/Notification";
 
 export default function V2() {
   const [customId, setCustomId] = useState<string>("customid");
-  const [code, setcode] = useState<string | undefined>("");
+  const [code, setcode] = useState<string | undefined>(
+    `// Enter your code, Dont mind errors shown in code\n`
+  );
   const [dropStatus, setDropStatus] = useState(false);
   const [loading, setLoading] = useState(false); //for showing loading message
   const [NotificationMessage, setNotificationMessage] = useState<string>(
@@ -76,6 +78,19 @@ export default function V2() {
     setCustomId(e.target.value);
   };
 
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target) {
+          setcode(code + (e.target.result as string));
+        }
+      };
+      reader.readAsText(file);
+    }
+  };
+
   return (
     <>
       <Notification dropStatus={loading} message="Loading" />
@@ -85,15 +100,32 @@ export default function V2() {
         <div className="flex-grow ">
           <div className="text-white flex justify-center items-center flex-col gap-y-5  h-[100%]">
             <div className="flex flex-col gap-y-1 w-[95%] sm:w-fit border border-white/30 rounded-lg overflow-hidden ">
-              <div className="text-lg sm:text-xl flex flex-col justify-start  p-2 px-4 ">
-                <div className="">Create a drop to generate code link</div>
-                <div className="text-base sm:text-lg block  ">
-                  Link:{" "}
-                  <Link href={`/${customId}`}>
-                    <pre className="text-base sm:text-xl inline bg-[#1e1e1e] p-[2px] px-1 rounded-lg">
-                      codedrop1.vercel.app/{customId}
-                    </pre>
-                  </Link>
+              <div className="text-lg sm:text-xl flex justify-between items-center p-2 px-2 sm:px-2 ">
+                <div className="flex flex-col justify-start">
+                  <div className="">Create a drop to generate code link</div>
+                  <div>
+                    <div className="text-base sm:text-lg block "></div>
+                    Link:{" "}
+                    <Link href={`/${customId}`}>
+                      <pre className="text-base sm:text-xl inline bg-[#1e1e1e] p-[2px] px-1 rounded-lg">
+                        codedrop1.vercel.app/{customId}
+                      </pre>
+                    </Link>
+                  </div>
+                </div>
+                <div>
+                  <label
+                    htmlFor="file-uploader"
+                    className="inline-block cursor-pointer rounded-lg bg-transparent border-white border py-1 px-1 text-center sm:px-2 md:px-3 text-white text-base"
+                  >
+                    Upload File
+                  </label>
+                  <input
+                    type="file"
+                    id="file-uploader"
+                    className="hidden"
+                    onChange={handleFileUpload}
+                  />
                 </div>
               </div>
               <div className="border-y border-y-white/30 w-[95vw] md:w-[60vw] lg:w-[40vw]">
@@ -102,7 +134,8 @@ export default function V2() {
                   height="60vh"
                   theme="vs-dark"
                   defaultLanguage="javascript"
-                  defaultValue={`// Enter your code, Dont mind errors shown in code\n`}
+                  //defaultValue={`// Enter your code, Dont mind errors shown in code\n`}
+                  value={code}
                   onChange={debounceEditorChange}
                   options={options}
                 ></Editor>
