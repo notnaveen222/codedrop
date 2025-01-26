@@ -100,7 +100,7 @@ export default function V2() {
         <div className="flex-grow ">
           <div className="text-white flex justify-center items-center flex-col gap-y-5  h-[100%]">
             <div className="flex flex-col gap-y-1 w-[95%] sm:w-fit border border-white/30 rounded-lg overflow-hidden ">
-              <div className="text-lg sm:text-xl flex justify-between items-center p-2 px-2 sm:px-2 ">
+              <div className="text-lg sm:text-xl flex flex-col gap-y-2 sm:flex-row justify-between items-start sm:items-center p-2 px-2 sm:px-2 ">
                 <div className="flex flex-col justify-start">
                   <div className="">Create a drop to generate code link</div>
                   <div>
