@@ -116,7 +116,7 @@ export default function V2() {
                 <div>
                   <label
                     htmlFor="file-uploader"
-                    className="inline-block cursor-pointer rounded-lg bg-transparent border-white border py-1 px-1 text-center sm:px-2 md:px-3 text-white text-base"
+                    className="inline-block cursor-pointer rounded-lg bg-transparent border-white border py-1 px-1 text-center sm:px-2 md:px-3 text-white text-base hover:bg-white hover:text-black"
                   >
                     Upload File
                   </label>
